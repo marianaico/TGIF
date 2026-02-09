@@ -17,19 +17,18 @@ function initStatistics(members) {
     statistics.democrats = members.filter(m => m.party === 'D');
     statistics.independents = members.filter(m => m.party === 'I');
 
-    // 2. Calcular promedios de votos con el partido
+    
     statistics.avg_votes_with_party_rep = calculateAverage(statistics.republicans, 'votes_with_party_pct');
     statistics.avg_votes_with_party_dem = calculateAverage(statistics.democrats, 'votes_with_party_pct');
     statistics.avg_votes_with_party_ind = calculateAverage(statistics.independents, 'votes_with_party_pct');
 
-    // 3. Rebanadas verticales: Top y Bottom 10%
-    // Asistencia (basado en missed_votes_pct)
-    statistics.least_engaged = getTopBottom(members, 'missed_votes_pct', 'top'); // Los que más faltan
-    statistics.most_engaged = getTopBottom(members, 'missed_votes_pct', 'bottom'); // Los que menos faltan
+    
+    statistics.least_engaged = getTopBottom(members, 'missed_votes_pct', 'top'); // 
+    statistics.most_engaged = getTopBottom(members, 'missed_votes_pct', 'bottom'); // 
 
-    // Lealtad (basado en votes_with_party_pct)
-    statistics.least_loyal = getTopBottom(members, 'votes_with_party_pct', 'bottom'); // Los que menos siguen al partido
-    statistics.most_loyal = getTopBottom(members, 'votes_with_party_pct', 'top'); // Los que más siguen al partido
+    
+    statistics.least_loyal = getTopBottom(members, 'votes_with_party_pct', 'bottom'); // 
+    statistics.most_loyal = getTopBottom(members, 'votes_with_party_pct', 'top'); // 
 }
 
 function calculateAverage(array, key) {
@@ -43,7 +42,7 @@ function getTopBottom(members, key, type) {
     const tenPercent = Math.round(members.length * 0.1);
     const result = sorted.slice(0, tenPercent);
     
-    // Lógica para incluir empates en el límite del 10%
+    
     const lastValue = result[result.length - 1][key];
     for (let i = tenPercent; i < sorted.length; i++) {
         if (sorted[i][key] === lastValue) result.push(sorted[i]);
@@ -52,7 +51,7 @@ function getTopBottom(members, key, type) {
     return result;
 }
 
-// Objeto que actúa como nuestro "Modelo"
+
 export const statistics = {
     senate: {
         glance: [],
@@ -70,7 +69,7 @@ export const statistics = {
     }
 };
 
-// Funciones de cálculo (Lógica de negocio)
+
 export function calculateStats(members) {
     const filterByParty = (p) => members.filter(m => m.party === p);
     const avg = (arr) => arr.length ? (arr.reduce((acc, m) => acc + m.votes_with_party_pct, 0) / arr.length).toFixed(2) : 0;
@@ -82,10 +81,10 @@ export function calculateStats(members) {
             { party: 'Independientes', count: filterByParty('I').length, avgVotes: avg(filterByParty('I')) },
             { party: 'Total', count: members.length, avgVotes: avg(members) }
         ],
-        // 10% más faltas y 10% menos faltas
+        
         leastEngaged: getTopBottom(members, 'missed_votes_pct', 'desc'),
         mostEngaged: getTopBottom(members, 'missed_votes_pct', 'asc'),
-        // 10% menos leales y 10% más leales
+        
         leastLoyal: getTopBottom(members, 'votes_with_party_pct', 'asc'),
         mostLoyal: getTopBottom(members, 'votes_with_party_pct', 'desc')
     };
@@ -97,7 +96,7 @@ function getTopBottom(members, key, order) {
     let limit = Math.round(members.length * 0.1);
     let result = sorted.slice(0, limit);
 
-    // Incluir empates si el siguiente miembro tiene el mismo valor que el último del 10%
+    
     for (let i = limit; i < sorted.length; i++) {
         if (sorted[i][key] === result[result.length - 1][key]) {
             result.push(sorted[i]);

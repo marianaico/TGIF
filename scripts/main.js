@@ -6,12 +6,12 @@ fetch(dataSource)
     .then(response => response.json())
     .then(data => {
         const members = data.results[0].members;
-        initStatistics(members); // Llamamos al modelo
-        renderTables();          // Llamamos a la vista
+        initStatistics(members); 
+        renderTables();          
     });
 
 function renderTables() {
-    // Render Tabla "At a glance"
+    
     const glanceBody = document.getElementById('at-a-glance-body');
     glanceBody.innerHTML = `
         <tr><td>Republicanos</td><td>${statistics.republicans.length}</td><td>${statistics.avg_votes_with_party_rep}%</td></tr>
@@ -19,7 +19,7 @@ function renderTables() {
         <tr><td>Independientes</td><td>${statistics.independents.length}</td><td>${statistics.avg_votes_with_party_ind}%</td></tr>
     `;
 
-    // Función auxiliar para renderizar tablas de miembros
+    
     renderMemberTable('most-engaged-table', statistics.most_engaged, 'missed_votes', 'missed_votes_pct');
     renderMemberTable('least-engaged-table', statistics.least_engaged, 'missed_votes', 'missed_votes_pct');
 }

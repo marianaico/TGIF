@@ -134,30 +134,30 @@
    <script type="module">
       import { fetchJson, makeMemberRows, makeStatesMenu } from "./scripts/html.js";
 
-      // 1. Obtener parámetro ?chamber=...
+      
       const params = new URLSearchParams(window.location.search);
       const chamber = params.get("chamber") || "senate";
 
-      // 2. Configuración de Variables según la cámara
-      let jsonUrl = "./src/senate-stats.json"; // Default
       
-      // Referencias a los bloques de texto
+      let jsonUrl = "./src/senate-stats.json"; 
+      
+      
       const senateIntro = document.getElementById("senate-intro");
       const houseIntro = document.getElementById("house-intro");
 
       if (chamber === "house") {
           jsonUrl = "./src/house-stats.json"; 
           
-          // Ocultar senado, mostrar house
+          
           senateIntro.classList.add("d-none");
           houseIntro.classList.remove("d-none");
       } else {
-          // Asegurarnos que senado se vea (por si acaso)
+          
           senateIntro.classList.remove("d-none");
           houseIntro.classList.add("d-none");
       }
 
-      // 3. Cargar datos
+      
       fetchJson(jsonUrl).then(data => {
         const tableBody = document.querySelector("#senate-table-body");
         const checkboxes = document.querySelectorAll(".party-checkbox");
@@ -185,31 +185,31 @@
     </script>
     <script>
   document.addEventListener("DOMContentLoaded", function() {
-      // 1. Obtener la ruta actual y los parámetros
+      
       const path = window.location.pathname;
       const params = new URLSearchParams(window.location.search);
       const chamber = params.get("chamber");
 
-      // 2. Limpiar la clase 'active' de todos los links por seguridad
+      
       document.querySelectorAll('.nav-link').forEach(link => {
           link.classList.remove('active');
-          // Opcional: quitar negrita si usas fw-bold
+          
           link.classList.remove('fw-bold'); 
       });
 
-      // 3. Lógica para decidir cuál resaltar
+      
       if (path.includes("index.html") || path.endsWith("/")) {
-          // Estamos en Home
+          
           const homeLink = document.getElementById("nav-home");
-          homeLink.classList.add("active", "fw-bold"); // Bootstrap active + negrita
+          homeLink.classList.add("active", "fw-bold"); 
           
       } else if (path.includes("members.html")) {
-          // Estamos en la página de miembros, ¿cuál cámara es?
+          
           if (chamber === "house") {
               const houseLink = document.getElementById("nav-house");
               houseLink.classList.add("active", "fw-bold");
           } else {
-              // Si es 'senate' O si no hay parámetro (por defecto es senado)
+              
               const senateLink = document.getElementById("nav-senate");
               senateLink.classList.add("active", "fw-bold");
           }
