@@ -1,0 +1,69 @@
+{
+  "status": "OK",
+  "copyright": "Copyright (c) 2022 Pro Publica Inc. All Rights Reserved.",
+  "results": [
+    {
+      "congress": "116",
+      "chamber": "House",
+      "num_results": 435,
+      "offset": 0,
+      "members": [
+        {
+          "id": "P000197",
+          "first_name": "Nancy",
+          "middle_name": null,
+          "last_name": "Pelosi",
+          "party": "D",
+          "state": "CA",
+          "seniority": "32",
+          "votes_with_party_pct": 100.0,
+          "url": "https://pelosi.house.gov"
+        },
+        {
+          "id": "O000172",
+          "first_name": "Alexandria",
+          "middle_name": null,
+          "last_name": "Ocasio-Cortez",
+          "party": "D",
+          "state": "NY",
+          "seniority": "2",
+          "votes_with_party_pct": 90.5,
+          "url": "https://ocasio-cortez.house.gov"
+        },
+        {
+          "id": "C001120",
+          "first_name": "Dan",
+          "middle_name": null,
+          "last_name": "Crenshaw",
+          "party": "R",
+          "state": "TX",
+          "seniority": "2",
+          "votes_with_party_pct": 92.0,
+          "url": "https://crenshaw.house.gov"
+        },
+        {
+           "id": "A000367",
+           "first_name": "Justin",
+           "middle_name": null,
+           "last_name": "Amash",
+           "party": "ID",
+           "state": "MI",
+           "seniority": "10",
+           "votes_with_party_pct": 65.4,
+           "url": "https://amash.house.gov"
+        },
+        {
+           "id": "TEST001",
+           "first_name": "Miembro",
+           "middle_name": "Sin",
+           "last_name": "Web",
+           "party": "R",
+           "state": "FL",
+           "seniority": "1",
+           "votes_with_party_pct": null,
+           "url": null
+        }
+      ]
+    }
+  ]
+}

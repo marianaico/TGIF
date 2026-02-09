@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Estadísticas del Senado</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container py-5">
+    <nav class="nav nav-pills mb-4">
+        <a class="nav-link" href="house.html">Senado</a>
+        <a class="nav-link active" href="house-stats.html">Estadísticas </a>
+        <a class="nav-link" href="house-stats.html">Estadísticas Cámara</a>
+    </nav>
+
+    <header>
+        <h1>Senado de un vistazo</h1>
+        <p>Estadísticas generales sobre la composición y el comportamiento de voto.</p>
+    </header>
+
+    <section class="mb-5">
+        <table class="table table-hover border">
+            <thead class="table-dark">
+                <tr><th>Partido</th><th>Nº de Miembros</th><th>% Votos con Partido</th></tr>
+            </thead>
+            <tbody id="glance-table"></tbody>
+        </table>
+    </section>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Menos Comprometidos (Más Faltas)</h3>
+            <table class="table table-sm border">
+                <thead class="table-secondary"><tr><th>Nombre</th><th>Votos Perdidos</th><th>%</th></tr></thead>
+                <tbody id="least-engaged"></tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <h3>Más Comprometidos (Menos Faltas)</h3>
+            <table class="table table-sm border">
+                <thead class="table-secondary"><tr><th>Nombre</th><th>Votos Perdidos</th><th>%</th></tr></thead>
+                <tbody id="most-engaged"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <h3>Menos Leales (% Votos con Partido)</h3>
+            <table class="table table-sm border">
+                <thead class="table-secondary"><tr><th>Nombre</th><th>Votos con Partido</th><th>%</th></tr></thead>
+                <tbody id="least-loyal"></tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <h3>Más Leales (% Votos con Partido)</h3>
+            <table class="table table-sm border">
+                <thead class="table-secondary"><tr><th>Nombre</th><th>Votos con Partido</th><th>%</th></tr></thead>
+                <tbody id="most-loyal"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
