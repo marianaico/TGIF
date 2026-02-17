@@ -55,19 +55,19 @@ export const states = [
   { name: "Wyoming", abbreviation: "WY" }
 ];
 
-// Partidos políticos
+
 export const parties = {
   D: "Democrat",
   R: "Republican",
   ID: "Independent"
 };
 
-// Función para traer un archivo JSON y devolver una promesa con los datos
+
 export function fetchJson(url) {
   return fetch(url).then(response => response.json());
 }
 
-// Genera las filas de la tabla filtrando por partido y estado
+
 export function makeMemberRows(data, selectedParties, selectedState) {
   const members = data.results[0].members;
   let html = "";
@@ -76,15 +76,15 @@ export function makeMemberRows(data, selectedParties, selectedState) {
     if (!selectedParties.includes(member.party)) return;
     if (selectedState && member.state !== selectedState) return;
 
-    // VALIDACIÓN 1: Nombre completo
+    
     const name = `${member.first_name} ${member.middle_name || ""} ${member.last_name}`;
 
-    // VALIDACIÓN 2: Si no hay URL, solo mostrar texto. Si hay URL, mostrar enlace.
+    
     const nameCell = member.url
       ? `<a href="${member.url}" target="_blank">${name}</a>`
       : name;
 
-    // VALIDACIÓN 3: Si el % de votos es null, mostrar "N/A"
+    
     const votesPct = member.votes_with_party_pct 
       ? member.votes_with_party_pct.toFixed(0) + "%" 
       : "N/A";
@@ -103,7 +103,7 @@ export function makeMemberRows(data, selectedParties, selectedState) {
   return html;
 }
 
-// Genera el HTML del menú desplegable de estados
+
 export function makeStatesMenu() {
   let html = `<option value="">Select a state</option>`;
 

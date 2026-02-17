@@ -1,22 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Members</title>
-
+<title>Attendance</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
 </head>
 
 <body>
 
-
+<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom mb-4">
 <div class="container-fluid px-4">
-
 <a class="navbar-brand fw-bold text-primary" href="index.html">TGIF</a>
 
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
 <span class="navbar-toggler-icon"></span>
 </button>
 
@@ -25,13 +21,8 @@
 
 <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
 
-<li class="nav-item">
-<a class="nav-link active" href="#">Members</a>
-</li>
-
 <li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Statistics</a>
-
+<a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown">Statistics</a>
 <ul class="dropdown-menu">
 <li><a class="dropdown-item" href="attendance.html?chamber=senate">Senate Attendance</a></li>
 <li><a class="dropdown-item" href="attendance.html?chamber=house">House Attendance</a></li>
@@ -39,7 +30,6 @@
 <li><a class="dropdown-item" href="loyalty.html?chamber=senate">Senate Loyalty</a></li>
 <li><a class="dropdown-item" href="loyalty.html?chamber=house">House Loyalty</a></li>
 </ul>
-
 </li>
 
 </ul>
@@ -47,35 +37,26 @@
 </div>
 </nav>
 
-
 <div class="container">
+<h1>Attendance Statistics</h1>
 
-<h1 class="mb-4">Congress Members</h1>
-
-<table class="table table-striped">
-
+<table class="table">
 <thead class="table-dark">
-<tr>
-<th>Name</th>
-<th>Party</th>
-<th>State</th>
-<th>Years</th>
-<th>% Votes With Party</th>
-</tr>
+<tr><th>Party</th><th>Members</th><th>Avg Missed Votes %</th></tr>
 </thead>
-
-<tbody id="members-table">
-</tbody>
-
+<tbody id="party-body"></tbody>
 </table>
+
+<h2>Least Engaged</h2>
+<table class="table"><tbody id="least-engaged"></tbody></table>
+
+<h2>Most Engaged</h2>
+<table class="table"><tbody id="most-engaged"></tbody></table>
 
 </div>
 
-<script src="./scripts/main.js"></script>
-
-
+<script type="module" src="scripts/new/attendanceView.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
-

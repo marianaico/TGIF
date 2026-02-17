@@ -1,11 +1,11 @@
 export function calculateStats(members) {
 
     const filterByParty = (party) =>
-        members.filter(member => member.party === party);
+        members.filter(m => m.party === party);
 
-    const calculateAverage = (array, field) =>
+    const average = (array, field) =>
         array.length
-            ? (array.reduce((sum, member) => sum + member[field], 0) / array.length).toFixed(2)
+            ? (array.reduce((sum, m) => sum + m[field], 0) / array.length).toFixed(2)
             : 0;
 
     const getTopBottom = (array, field, order) => {
@@ -19,13 +19,11 @@ export function calculateStats(members) {
         const tenPercent = Math.ceil(array.length * 0.1);
         let result = sorted.slice(0, tenPercent);
 
-        // Incluir empates
+        // incluir empates
         for (let i = tenPercent; i < sorted.length; i++) {
             if (sorted[i][field] === result[result.length - 1][field]) {
                 result.push(sorted[i]);
-            } else {
-                break;
-            }
+            } else break;
         }
 
         return result;
@@ -37,22 +35,20 @@ export function calculateStats(members) {
             {
                 party: "Democrats",
                 count: filterByParty("D").length,
-                avgVotes: calculateAverage(filterByParty("D"), "votes_with_party_pct")
+                avgMissed: average(filterByParty("D"), "missed_votes_pct"),
+                avgVotes: average(filterByParty("D"), "votes_with_party_pct")
             },
             {
                 party: "Republicans",
                 count: filterByParty("R").length,
-                avgVotes: calculateAverage(filterByParty("R"), "votes_with_party_pct")
+                avgMissed: average(filterByParty("R"), "missed_votes_pct"),
+                avgVotes: average(filterByParty("R"), "votes_with_party_pct")
             },
             {
                 party: "Independents",
                 count: filterByParty("I").length,
-                avgVotes: calculateAverage(filterByParty("I"), "votes_with_party_pct")
-            },
-            {
-                party: "Total",
-                count: members.length,
-                avgVotes: calculateAverage(members, "votes_with_party_pct")
+                avgMissed: average(filterByParty("I"), "missed_votes_pct"),
+                avgVotes: average(filterByParty("I"), "votes_with_party_pct")
             }
         ],
 
